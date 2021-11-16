@@ -1,47 +1,9 @@
-/*폰트 설정 div*/
+
+/*폰트 설정*/
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 div {
     font-family: 'Nanum Gothic', sans-serif;
 }
-
-/* 네브바 */
-.nav{
-    background-color: white;
-    height: 50px;
-    top: 0px;
-    display: grid;
-    grid-template-columns: 6fr 4fr;
-    position: fixed;
-    z-index: 99999;
-}
-
-.menu{
-    display: inline;
-    text-align: right;
-    margin-top: 2%;
-    text-align: center;
-    
-}
-.menu_a{
-    text-decoration-line: none;
-    margin: 0% 1%;
-    height: 100%;
-    color: black;
-   
-}
-.notice{
-    width: 3%;
-
-} 
-.nav p{
-    margin-top: 0px;
-    margin-left: 3%;
-    padding-top: 0px;
-    display: inline;
-    font-weight: bold;
-    font-size: 1.8rem;
-}
-/* 네브바 */
 
 /* 메인 */
 #contents {
@@ -56,10 +18,9 @@ h1 {
     color: #fff;
     font-size:50px;
     text-shadow: 2px 3px 0 #000;    /* x축 y축 blur값 색상값 */
-    margin: 0 auto;                   /* margin 0 = 여백없이, auto = 가로 중앙 배치 + 좌우 여백 균등 배분  */
-    position:relative;                /* relative = 태그 위치 변경 가능 */
-    text-align: center;
-    padding-top: 7rem;
+    position:absolute;                /* absolute = 문서의 원래 위치 관계없이 위치 지정 가능 */
+    right: 750px;
+    bottom: 30px;
 }
 
 .list1{
@@ -87,4 +48,3 @@ h1 {
     font-size:25px;
 }
 
-/* 메인 */

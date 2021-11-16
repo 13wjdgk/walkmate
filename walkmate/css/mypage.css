@@ -1,3 +1,4 @@
+
 /*폰트 설정 div*/
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 div {
@@ -35,8 +36,8 @@ body {
 }
 .notice{
     width: 3%;
-
 } 
+
 .nav p{
     margin-top: 0px;
     margin-left: 3%;
@@ -46,6 +47,7 @@ body {
     font-size: 1.8rem;
 }
 /* 네브바 */
+
 
 /*마이페이지 바*/
 .mypageBar {
@@ -110,3 +112,97 @@ input[type="submit"], input[type="reset"] {  /* type="submit", type="reset"인 i
 input[type="submit"] {  /* type="submit"인 input 요소에 적용할 스타일 */
   margin-right:20px;  /* 오른쪽 마진 */
 }    
+/*=======*/
+.title{
+    margin-top: 60px;
+    height: 100px;
+    background-color: #448AFF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight:bold;
+}
+.mypageList{
+    list-style: none;
+    height: 130px;
+    margin-left: -20px;
+    color: black;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding-right: 20px;
+}
+.mypageMainList{
+    border: 2px solid #448AFF;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 260px;
+    font-size: 21px;
+    margin-top: 50px;
+    box-shadow: 2px 3px 10px #777777;
+    font-weight:500;
+}
+a.list{
+    color: black;
+    text-decoration-line: none;
+    
+    padding-bottom: 5px;
+}
+li.list{
+    border-bottom: 1px solid #7D889A;
+    padding-top: 5px;
+}
+.applicantLists{
+    margin-top: 40px;
+    border: 1px solid #7D889A;
+    margin-left: 20px;
+    width: 260px;
+    height: 31rem;
+}
+.leftList{
+    display: flex;
+    flex-direction: column;
+}
+.mypageMain{
+    display: flex;
+    flex-direction: row;
+}
+.main{
+    flex: 1;
+}
+.mainTop{
+    display: flex;
+    flex-direction: row;
+}
+.mainRight{
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    font-size: 20px;
+    padding-right: 60px;
+}
+.rightListQ{
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+.rightListA{
+    padding-bottom: 10px;
+    width: 500px;
+}   
+.rightList{
+    display: flex;
+}
+.presentUser{
+    margin-left: 60px;
+    font-size: 25px;
+}
+.horizon{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border: 0;
+    height: 1px;
+    background-color: #448AFF;
+}
