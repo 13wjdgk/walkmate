@@ -5,46 +5,6 @@ div {
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-/* 네브바 */
-.nav{
-    background-color: white;
-    height: 50px;
-    top: 0px;
-    display: grid;
-    grid-template-columns: 6fr 4fr;
-    position: fixed;
-    z-index: 99999;
-}
-
-.menu{
-    display: inline;
-    text-align: right;
-    margin-top: 2%;
-    text-align: center;
-    
-}
-.menu_a{
-    text-decoration-line: none;
-    margin: 0% 1%;
-    height: 100%;
-    color: black;
-   
-}
-.notice{
-    width: 3%;
-
-} 
-.nav p{
-    margin-top: 0px;
-    margin-left: 3%;
-    padding-top: 0px;
-    display: inline;
-    font-weight: bold;
-    font-size: 1.8rem;
-}
-/* 네브바 */
-
-
 /* 메인 */
 #contents {
     background-color: #448aff;      /* 색깔 */
@@ -87,5 +47,4 @@ h1 {
     text-decoration: underline #488aff 3px;      /* 밑줄 선언*/
     font-size:25px;
 }
-
 
