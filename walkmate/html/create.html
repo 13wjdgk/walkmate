@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>walk mate</title>
+    <link rel="stylesheet" href="../css/create.css">
+    <link rel="stylesheet" href="../css/nav.css">
+</head>
+<body>
+    <!-- nav 바 -->
+    <div class="nav">
+        <a class="logo" href="./main.html">wɔːk meɪt</a>
+        <div class="menu">
+            <a class="menu_a" href="./create.html">산책메이트 구하기</a>
+            <a class="menu_a" href="./list.html">산책메이트 찾기</a>
+            <a class="menu_a" href="">로그인</a>/<a class="menu_a" href="">회원가입</a>
+            <a class="menu_a" href=""><img class="notice"src="../img/알림.png" alt="알림"></a>
+        </div>
+    </div>
+    <!-- 파랑 in_nav 바 -->
+    <div class="in_nav">
+        <input type="text" style="font-size: 1.5rem;" placeholder="제목을 입력하세요">
+    </div>
+    <!-- contents -->
+    <div class="container">
+        <div class="container_item">
+            <p>*지도로 위치를 표시하세요</p>
+            <div id="map" style="width:800px;height:400px;"></div>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6aa7b3f280d43b865071717aa200ff7"></script>
+            <script>
+                var container = document.getElementById('map');
+                var options = {
+                    center: new kakao.maps.LatLng(33.450701, 126.570667),
+                    level: 3
+                };
+
+                var map = new kakao.maps.Map(container, options);
+            </script>
+        </div>
+        <div class="container_item">
+            <div class="container_item_in">
+                <input style="display: block; width: 20rem; margin-left: 0px;" type="text" placeholder="장소">
+                <p>날짜</p><input type="text" placeholder="년"><input type="text" placeholder="월"><input type="text" placeholder="일">
+                <br>
+                <p>모집인원</p><input type="number" placeholder="명">
+                <p style="display: block;">한마디</p>
+                <textarea name="" id="" cols="45" rows="10"></textarea>
+                <button>글 올리기</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
