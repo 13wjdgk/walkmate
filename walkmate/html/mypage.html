@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="../css/mypage.css">
+</head>
+ <body>
+    <!-- nav 바 -->
+    <div class="nav">
+        <p>wɔːk meɪt</p>
+        <div class="menu">
+            <a class="menu_a" href="">산책메이트 구하기</a>
+            <a class="menu_a" href="">산책메이트 구하기</a>
+            <a class="menu_a" href="">로그인</a>/<a class="menu_a" href="">회원가입</a>
+            <a class="menu_a" href=""><img class="notice"src="../img/알림.png" alt="알림"></a>
+        </div>
+    </div>
+    <!-- nav 바 -->
+
+    <!-- 마이페이지 바-->
+    <div class="mypageBar">
+      <h1>마이페이지</h1>
+    </div>
+    <!-- 마이페이지 바-->
+
+    
+    <form>
+      <div class = "MypageSet">
+        <ul id="Mypage">
+          <li>
+            <label for="addr">닉네임</label> 
+            <input type="text" id="nickname" required>
+          </li>
+          <li>
+            <label for="addr">나의동네</label> 
+            <input type="text" id="addr" required>
+          </li>
+          <li>
+            <label for="gender">성별</label>
+            <input type="radio" name="gender" value="male">남자
+            <input type="radio" name="gender" value="female">여자
+            <input type="radio" name="gender" value="all">상관없음
+          </li>
+          <li>
+            <label for="age">나이</label>
+            <input type="radio" name="age" value="10~19">10~19
+            <input type="radio" name="age" value="20~24">20~24
+            <input type="radio" name="age" value="25~29">25~29
+            <input type="radio" name="age" value="30~34">30~34
+          </li>
+          <li>
+            <label for="people">산책인원</label>
+            <input type="radio" name="people" value="two">2명
+            <input type="radio" name="people" value="three">3명
+            <input type="radio" name="people" value="four">4명
+          </li>
+        </ul>
+      </div>  
+      
+      <div class = "button">
+        <input type="submit" value="변경하기"> 
+        <input type="reset" value="취소하기">
+      </div>        
+    </form>
