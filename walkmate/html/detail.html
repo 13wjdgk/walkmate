@@ -28,7 +28,14 @@
         <div class="container_item">
             <p>*지도에서 위치를 확인하세요!</p>
             <div id="map" style="width:800px;height:400px;"></div>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6aa7b3f280d43b865071717aa200ff7"></script>
+            <p>
+                <button onclick="selectOverlay('MARKER')">마커</button>
+            </p>
+            <p class="getdata">
+                <button onclick="getDataFromDrawingMap()">가져오기</button>
+                <button onclick="setMap(data)">표시하기</button>
+            </p>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6aa7b3f280d43b865071717aa200ff7&libraries=drawing"></script>
             <script>
                 var container = document.getElementById('map');
                 var options = {
@@ -37,6 +44,56 @@
                 };
 
                 var map = new kakao.maps.Map(container, options);
+                var options = { // Drawing Manager를 생성할 때 사용할 옵션입니다
+                    map: map, // Drawing Manager로 그리기 요소를 그릴 map 객체입니다
+                    drawingMode: [ // drawing manager로 제공할 그리기 요소 모드입니다
+                        kakao.maps.drawing.OverlayType.MARKER,
+                    ],
+                    // 사용자에게 제공할 그리기 가이드 툴팁입니다
+                    // 사용자에게 도형을 그릴때, 드래그할때, 수정할때 가이드 툴팁을 표시하도록 설정합니다
+                    guideTooltip: ['draw', 'drag', 'edit'], 
+                    markerOptions: { // 마커 옵션입니다 
+                        draggable: true, // 마커를 그리고 나서 드래그 가능하게 합니다 
+                        removable: true // 마커를 삭제 할 수 있도록 x 버튼이 표시됩니다  
+                    },
+                    
+                };
+
+                // 위에 작성한 옵션으로 Drawing Manager를 생성합니다
+                var manager = new kakao.maps.drawing.DrawingManager(options);
+
+                // 버튼 클릭 시 호출되는 핸들러 입니다
+                function selectOverlay(type) {
+                    // 그리기 중이면 그리기를 취소합니다
+                    manager.cancel();
+
+                    // 클릭한 그리기 요소 타입을 선택합니다
+                    manager.select(kakao.maps.drawing.OverlayType[type]);
+                }
+                //핀을 객체로 보내기
+
+                var data;
+                function getDataFromDrawingMap() {
+                    // Drawing Manager에서 그려진 데이터 정보를 가져옵니다 
+                    data = manager.getData();
+                    alert(JSON.stringify(data));
+                }
+                function setMap(markers) {
+                    drawMarker(data[kakao.maps.drawing.OverlayType.MARKER]);
+                }
+                function drawMarker(markers) {
+                    var len = markers.length, i = 0;
+
+                    for (; i < len; i++) {
+                        var marker = new kakao.maps.Marker({
+                            map: map, 
+                            position: new kakao.maps.LatLng(markers[i].y, markers[i].x), 
+                            zIndex: markers[i].zIndex
+                        });
+
+                    }
+                }
+
             </script>
         </div>
         <div class="container_item">
