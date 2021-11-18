@@ -3,83 +3,43 @@
 div {
     font-family: 'Nanum Gothic', sans-serif;
 }
-
 body {
     margin: 0%;
 }
-
-/* 네브바 */
-.nav{
-    background-color: white;
-    height: 50px;
-    top: 0px;
-    display: grid;
-    grid-template-columns: 6fr 4fr;
-    position: fixed;
-    z-index: 99999;
-}
-
-.menu{
-    display: inline;
-    text-align: right;
-    margin-top: 2%;
-    text-align: center;
-    
-}
-.menu_a{
-    text-decoration-line: none;
-    margin: 0% 1%;
-    height: 100%;
-    color: black;
-   
-}
-.notice{
-    width: 3%;
-
-} 
-.nav p{
-    margin-top: 0px;
-    margin-left: 3%;
-    padding-top: 0px;
-    display: inline;
-    font-weight: bold;
-    font-size: 1.8rem;
-}
-/* 네브바 */
 
 /*회원가입 바*/
 .MemberBar {
   background-color: #448aff;      /* 색깔 */
   width:100%;                       /* 가로 */
-  height: 200px;                    /* 세로 */
+  height: 12rem;                    /* 세로 */
   margin: 0 auto;                   /* margin 0 = 여백없이, auto = 가로 중앙 배치 + 좌우 여백 균등 배분  */
   position:relative;                /* relative = 태그 위치 변경 가능 */
-  text-align: center;
+  text-align: center;               /* 텍스트 중앙 배치 */
 }
 
 h1 {
-  color: #fff;
-  font-size:40px;
+  color: #fff;                    /* 폰트 색상 설정 */
+  font-size:3rem;                   /* 폰트 크기 설정 */
   text-shadow: 2px 3px 0 #000;    /* x축 y축 blur값 색상값 */
-  padding-top: 5.3rem;
+  padding-top: 4rem;                /* 텍스트 위치 변경 */
 }
 /*회원가입 바*/
 
-
-ul { /* 모든 ul 요소에 적용할 스타일 */
-  list-style:none;  /* 불릿 없애기 */
-  padding-left:0;  /* 왼쪽 패딩 */ 
+/* 회원가입 */ 
+ul {                                /* 모든 ul 요소에 적용할 스타일 */
+  list-style:none;                  /* 불릿 없애기 */
+  padding-left:0;                   /* 왼쪽 패딩 */ 
 }
-li {  /* 모든 li 요소에 적용할 스타일 */
-  margin:10px;  /* 마진 */
+li {                                /* 모든 li 요소에 적용할 스타일 */
+  margin:1rem;                      /* 마진 */
 }
-#joining li label {  /* #shipping 요소의 하위 li label 요소에 적용할 스타일 */
- width:80px;  /* 라벨 너비 */
- float:left;  /* 좌우로 배치 */
- text-align:left; /* 텍스트  정렬 */    
+#joining li label {                 /* #shipping 요소의 하위 li label 요소에 적용할 스타일 */
+ width:6rem;                        /* 라벨 너비 */
+ float:left;                        /* 좌우로 배치 */
+ text-align:left;                   /* 텍스트  정렬 */    
 }
 input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {   
-  width:300px;   /* 너비 */
+  width:300px;                      /* 너비 */
 }
 
 .JoinSet {
@@ -92,22 +52,20 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
   width: fit-content;
 }
 
-
-/* '주문하기', '취소하기' 버튼 */
-.button {  /* 모든 button요소에 적용할 스타일 */
-  width:400px;  /* 너비 */
-  margin:15px auto;  /* 화면 중앙에 배치 */
+.button {                            /* 모든 button요소에 적용할 스타일 */
+  width:400px;                       /* 너비 */
+  margin:15px auto;                  /* 화면 중앙에 배치 */
 }
-input[type="submit"], input[type="reset"] {  /* type="submit", type="reset"인 input 요소에 적용할 스타일 */
-  text-align:center;  /* 텍스트 중앙 정렬 */
-  width:150px;  /* 너비 */
-  height:40px;  /* 높이 */    
-  background-color:#448aff;  /* 배경색 */
-  border:1px solid #000; /* 테두리 */
-  border-radius: 10px;
-  color: #fff;
-
+input[type="submit"], input[type="reset"] {  /* 두 type의  input 요소에 적용할 스타일 */
+  text-align:center;                         /* 텍스트 중앙 정렬 */
+  width:150px;                               /* 너비 */
+  height:40px;                               /* 높이 */    
+  background-color:#448aff;                /* 배경색 */
+  border:1px solid #000;                   /* 테두리 */
+  border-radius: 0.5rem;                     /* 테두리 가장자리 둥근 정도 */
+  color: #fff;                             /* 글자색 */
+ 
 }
-input[type="submit"] {  /* type="submit"인 input 요소에 적용할 스타일 */
-  margin-right:20px;  /* 오른쪽 마진 */
+input[type="submit"] {                       /* type="submit"인 input 요소에 적용할 스타일 */
+  margin-right:20px;                         /* 오른쪽 마진 */
 }    
