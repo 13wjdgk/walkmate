@@ -27,7 +27,7 @@ try {
 
     $hostKey = $getHostKeyQuery -> fetch(PDO::FETCH_COLUMN);
 
-    if($hostKey !== $_SESSION['user_key']) {
+    if($hostKey !== $_SESSION['userKey']) {
         throw new Exception("권한 없음", 4);
     }
 
@@ -61,7 +61,16 @@ try {
                     }
                 }
                 execQuery($confirmQuery);
+
+                $changeCountSql = "UPDATE walk SET nowMemberCount = nowMemberCount + 1, applyMemberCount = applyMemberCount - 1 WHERE walkKey = :walkKey";
+            } else {
+                $changeCountSql = "UPDATE walk SET applyMemberCount = applyMemberCount - 1 WHERE walkKey = :walkKey";
             }
+
+            $changeCountQuery = $database -> prepare($changeCountSql);
+            $changeCountQuery -> bindValue(':walkKey', $targetWalkKey, PDO::PARAM_INT);
+
+            execQuery($changeCountQuery);
             
             $delApplySql = "DELETE FROM applylist WHERE walkKey = :walkKey AND memberKey = :memberKey";
             $delApplyQuery = $database -> prepare($delApplySql);
@@ -70,6 +79,7 @@ try {
             $delApplyQuery -> bindValue(':memberKey', $app['memberKey'], PDO::PARAM_STR);
             
             execQuery($delApplyQuery);
+
             $resArray['isSuccess'] = true;
             $flag = true;
             break;
