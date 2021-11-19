@@ -17,7 +17,7 @@ try {
     execQuery($query);
 
     if($query -> rowCount() < 1) {
-        throw new Exception("존재하지 않는 글", 4);
+        throw new Exception("없는 글", 3);
     }   
 
     $walkPost = $query -> fetch(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@ try {
         $applyQuery -> bindValue(':reqKey', $reqWalkKey, PDO::PARAM_INT);
         execQuery($applyQuery);
         $resArray['applyList'] = $applyQuery -> fetchAll(PDO::FETCH_ASSOC);
-        
+
     } else {
         $resArray['isHost'] = false;
     }

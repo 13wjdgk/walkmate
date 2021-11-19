@@ -38,7 +38,7 @@ try {
     execQuery($getApplyQuery);
 
     if($getApplyQuery -> rowCount() < 1) {
-        throw new Exception("신청한 사용자 없음", 5);
+        throw new Exception("신청한 사용자 없음", 4);
     }
 
     $applies = $getApplyQuery -> fetchAll(PDO::FETCH_ASSOC);
@@ -87,7 +87,7 @@ try {
     }
 
     if(!$flag) {
-        throw new Exception("해당하는 신청자 없음", 6);
+        throw new Exception("해당하는 신청자 없음", 4);
     }
 } catch (Exception $e) {
     $resArray['code'] = $e -> getCode();

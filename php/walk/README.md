@@ -114,6 +114,7 @@
 
         **Example**
         ```json
+        //Case: Success
         {
             "isSuccess":true,
             "body":{
@@ -305,3 +306,14 @@
             "errorDetail": "DB 오류"
         }
         ```
+
+* ### **Error Codes**
+
+    |Code|Description|
+    |:--:|:---|
+    |1|DB 오류|
+    |2|로그인 세션 오류 (로그인 상태 아님)|
+    |3|존재하지 않는 글|
+    |4|중복 신청 / 승인할 신청자 없음|
+    |5|권한 없음|
+    
