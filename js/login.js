@@ -3,7 +3,7 @@ const login=async()=>{
     const user_pw=document.getElementById("user_pw").value;
     if(user_id&&user_pw){
         try{
-            const account = await axios.post("../php/login.php",{
+            const account = await axios.post("../php/account/login.php",{
                 user_id:user_id,
                 user_pw:user_pw
             });
