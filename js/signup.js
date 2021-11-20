@@ -21,7 +21,7 @@ const signup=async()=>{
     if(id&&user_pw&&nickname&&addr&&mail&&phone&&birth&&(gender!=null)){
         console.log("데이터 들어옴");
         try{
-            const account = await axios.post("../php/signup.php",{
+            const account = await axios.post("../php/account/signup.php",{
                 user_id:id,
                 user_pw:user_pw,
                 nickname:nickname,
