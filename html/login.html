@@ -7,8 +7,12 @@
     <title>로그인</title>
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/nav.css">
-    <script src="../js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="../js/nav.js"></script>
+    <script src="../js/login.js"></script>
+
 
 </head>
  <body>
@@ -18,8 +22,7 @@
       <div class="menu">
           <a class="menu_a" href="./create.html">산책메이트 구하기</a>
           <a class="menu_a" href="./list.html">산책메이트 찾기</a>
-          <a class="menu_a" href="./login.html">로그인</a>/<a class="menu_a" href="./member.html">회원가입</a>
-          <a class="menu_a" href=""><img class="notice"src="../img/알림.png" alt="알림"></a>
+
       </div>
   </div>
     <!-- nav 바 -->
@@ -45,7 +48,7 @@
             <input type="password" id="user_pw"  required>
           </li>
         </ul>
-            <input type="submit" value="로그인" onclick="login();">
+            <input type="submit" value="로그인" onclick="login();self.location='./main.html'">
       </div>
         
       <div>
