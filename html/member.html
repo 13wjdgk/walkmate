@@ -7,9 +7,10 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="../css/member.css">
     <link rel="stylesheet" href="../css/nav.css">
-    <script src="../js/nav.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.24.0/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/signup.js"></script>
 
     <source src="../js/member.js" type="">
     <style>
@@ -54,8 +55,8 @@
  <body>
     <!-- nav 바 -->
     <div class="nav">
-      <a class="logo" href="./main.html">wɔːk meɪt</a>
-      <div class="menu">
+        <a class="logo" href="./main.html">wɔːk meɪt</a>
+        <div class="menu">
           <a class="menu_a" href="./create.html">산책메이트 구하기</a>
           <a class="menu_a" href="./list.html">산책메이트 찾기</a>
           <a class="menu_a" href="./login.html">로그인</a>/<a class="menu_a" href="./member.html">회원가입</a>
@@ -63,13 +64,13 @@
           <!-- <a class="menu_a" href="./mypage.html">마이페이지</a> -->
           
           
-      </div>
-  </div>
+        </div>
+    </div>
     <!-- nav 바 -->
 
     <!-- 회원가입 바-->
     <div class="MemberBar">
-      <h1>회원가입</h1>
+        <h1>회원가입</h1>
     </div>
     <!-- 회원가입 바-->
 
@@ -89,7 +90,8 @@
             <input type="text" id="nickname" required>
           </li>
           <li>
-            <label for="addr">내위치</label> 
+            <label for="addr">내위치</label>
+            <div style="font-size: 12px;">&lt;위치를 클릭해주세요&gt;</div> 
             <div class="ch_addr"></div>
             <br>
             <div class="my_located">
@@ -105,6 +107,9 @@
                             </form>
                         </div>
                     </div>
+                    <p>
+                        <button onclick="selectOverlay('MARKER')">마커</button>
+                    </p>
                     <hr>
                     <ul id="placesList"></ul>
                     <div id="pagination"></div>
@@ -337,8 +342,29 @@
             }
             function click(){
                     console.log("ds");
-                }
-            
+            }
+            // 지도를 클릭한 위치에 표출할 마커입니다
+            var marker = new kakao.maps.Marker({ 
+                // 지도 중심좌표에 마커를 생성합니다 
+                position: map.getCenter() 
+            }); 
+            // 지도에 마커를 표시합니다
+            marker.setMap(map);
+            // 지도에 클릭 이벤트를 등록합니다
+            // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+            var addr;
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+                
+                // 클릭한 위도, 경도 정보를 가져옵니다 
+                addr = mouseEvent.latLng;
+                console.log(addr);
+                // 마커 위치를 클릭한 위치로 옮깁니다
+                marker.setPosition(addr); 
+            });
+            const addrPass = () => {
+                var data = addr;
+                return data;
+            }
             </script>
             </div> 
           </li>
