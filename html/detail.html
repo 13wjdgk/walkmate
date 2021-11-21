@@ -30,9 +30,6 @@
         <div class="container_item">
             <p>*지도에서 위치를 확인하세요!</p>
             <div id="map" style="width:800px;height:400px;"></div>
-            <p>
-                <button onclick="selectOverlay('MARKER')">마커</button>
-            </p>
             <p class="getdata">
                 <button onclick="getDataFromDrawingMap()">가져오기</button>
                 <button onclick="setMap(data)">표시하기</button>
@@ -60,20 +57,11 @@
                     },
                     
                 };
-
+                
                 // 위에 작성한 옵션으로 Drawing Manager를 생성합니다
                 var manager = new kakao.maps.drawing.DrawingManager(options);
 
-                // 버튼 클릭 시 호출되는 핸들러 입니다
-                function selectOverlay(type) {
-                    // 그리기 중이면 그리기를 취소합니다
-                    manager.cancel();
-
-                    // 클릭한 그리기 요소 타입을 선택합니다
-                    manager.select(kakao.maps.drawing.OverlayType[type]);
-                }
                 //핀을 객체로 보내기
-
                 var data;
                 function getDataFromDrawingMap() {
                     // Drawing Manager에서 그려진 데이터 정보를 가져옵니다 
