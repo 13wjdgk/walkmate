@@ -7,5 +7,5 @@ const session=async()=>{
         $('.menu' ).append('<a class="menu_a" href="./login.html">로그인</a>/<a class="menu_a" href="./member.html">회원가입</a>');
     }
 };
-session();
 
+session();
