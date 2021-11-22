@@ -2,6 +2,10 @@
 // var value=select_walklist.options[select_walklist.selectedIndex].value;
 // console.log(value);
 //최근 등록된 
+
+
+const getDetailURL ='http://localhost/html/detail.html?';
+
 const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
         requireCount: 10, //한번에 몇개씩
@@ -10,8 +14,10 @@ const getRecWalk=async()=>{
     });
     console.log(list.data.walksCount);
     if(list.data.walksCount){
+        
         for(var i=0;i<list.data.walksCount;i++){
-            $('ul' ).append('<li><a href="detail.html"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
+            
+            $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
         }
 }
 //가까운 거리
@@ -26,17 +32,18 @@ const getNearWalk=async()=>{
     if(list.data.walksCount){
         for(var i=0;i<list.data.walksCount;i++){
             console.log(list.data.walks[i].title);
-            $('ul' ).append('<li><a href="detail.html"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
+            $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
         }
     }
 
 
 // const value=select_walklist.options[select_walklist.selectedIndex].value;
 // console.log(value);
-if(false){
-    getNearWalk();
-}else{
+if(true){
     getRecWalk();
+    
+}else{
+    getNearWalk();
 }
 
 
