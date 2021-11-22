@@ -10,12 +10,13 @@ const signup=async()=>{
     const birth=document.getElementById("birth").value;
     let gender=document.querySelector('input[name="gift"]:checked').value; // 체크된 값(checked value)
     if(gender=="female"){
-        gender=true;
-    }else{gender=false;}
+        gender=1;
+    }else{gender=0;}
     console.log(id);
     console.log(user_pw);
     console.log(nickname);
     console.log(addr.getLat());
+    console.log(addr.getLng());
     console.log(mail);
     console.log(phone);
     console.log(birth);

@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 // Written by NamHyeok Kim
 
 error_reporting(E_ALL);
@@ -27,4 +27,4 @@ function checkSession() {
     return false;
 }
 
-?> -->
+?>

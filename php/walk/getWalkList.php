@@ -11,7 +11,7 @@ $walkListCount = $_POST['walkListCount'];
 $requestTime = $_POST['requestTime'];
 
 $resArray = array('isSuccess' => false);
-
+// walkcount 이때까지 몇개를 불러왔는지
 try {
     $param = array(':reqTime' => $requestTime, ':requireCount' => $requireCount, ':walkListCount' => $walkListCount);
     

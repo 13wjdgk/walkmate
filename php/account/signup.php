@@ -13,17 +13,18 @@ $birth =$_POST["birth"];
 $gender =$_POST["gender"];
 $addrLatitute =$_POST["addrLatitute"];
 $addrLongitude =$_POST["addrLongitude"];
-
+mysqli_report(MYSQLI_REPORT_ERROR);
 $sql = "SELECT * FROM account WHERE real_id ='$user_id'";
 //echo $sql;
 $res = $db->query($sql);
 $row = $res->fetch_array(MYSQLI_ASSOC);
 if($row==null){
-    $sql = "INSERT INTO `account`(`real_id`,`pw`,`nickname`,`email`,`phone`,`birth`,`gender`,`addrLatitude`,`addrLongitude`) 
-    VALUES('$user_id','$user_pwHashedPw','$nickname','$mail','$phone','$birth','$gender','$addrLatitute','$addrLongitude')";
+    
+    $sql = "INSERT INTO `account`(`real_id`,`pw`,`nickname`,`email`,`phone`,`birth`,`gender`,`addrLongitude`,`addrLatitude`) 
+    VALUES('$user_id','$user_pwHashedPw','$nickname','$mail','$phone','$birth','$gender','$addrLongitude','$addrLatitute')";
     //echo $sql;
-    $res2=$db->query($sql);
-    $row2 = $res2->fetch_array(MYSQLI_ASSOC);
+    $res=$db->query($sql);
+    echo $res;
     echo json_encode(true,JSON_UNESCAPED_UNICODE|JSON_NUMERIC_CHECK);
     echo $user_id;
 
