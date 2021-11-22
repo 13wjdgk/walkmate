@@ -1,7 +1,13 @@
 // var select_walklist=document.getElementById("select_walklist");
 // var value=select_walklist.options[select_walklist.selectedIndex].value;
 // console.log(value);
-//최근 등록된 
+//최근 등록된   confirmApplyWalk.php
+
+const getApplyMywalk=async()=>{
+    const list = await axios.post("../php/walk/confirmApplyWalk.php",{
+        
+    })
+}
 const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
         requireCount: 10, //한번에 몇개씩
