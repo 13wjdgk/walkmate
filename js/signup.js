@@ -15,11 +15,13 @@ const signup=async()=>{
     console.log(id);
     console.log(user_pw);
     console.log(nickname);
-    console.log(addr);
+    console.log(addr.getLat());
     console.log(mail);
     console.log(phone);
     console.log(birth);
     console.log(gender);
+    const addrLatitute = addr.getLat();
+    const addrLongitude = addr.getLng();
     if(id&&user_pw&&nickname&&addr&&mail&&phone&&birth&&(gender!=null)){
         console.log("데이터 들어옴");
         try{
@@ -27,7 +29,8 @@ const signup=async()=>{
                 user_id:id,
                 user_pw:user_pw,
                 nickname:nickname,
-                addr:addr,
+                addrLatitute: addrLatitute,
+                addrLongitude: addrLongitude,
                 mail:mail,
                 phone:phone,
                 birth:birth,
