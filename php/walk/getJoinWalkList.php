@@ -39,6 +39,7 @@ try {
         $getWalksQuery -> bindValue(':long', $userAddr['addrLongitude'], PDO::PARAM_STR);
 
         execQuery($getWalksQuery);
+        
 
         $walksList = $getWalksQuery -> fetchAll(PDO::FETCH_ASSOC);
     }

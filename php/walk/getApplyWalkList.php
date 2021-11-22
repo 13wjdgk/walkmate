@@ -22,7 +22,6 @@ try {
     $applyKeysString = implode(', ', $applyKeys);
     $walksList = array();
 
-    //echo $joinKeysString;
 
     if($getKeysQuery -> rowCount() > 0) {
         $getAddrSql = "SELECT addrLatitude, addrLongitude FROM account WHERE id = :id";
