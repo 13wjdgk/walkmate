@@ -1,6 +1,21 @@
-// var select_walklist=document.getElementById("select_walklist");
-// var value=select_walklist.options[select_walklist.selectedIndex].value;
-// console.log(value);
+function chageLangSelect(){ 
+    let select_walklist = document.getElementById("select_walklist"); // select element에서 선택된 option의 value가 저장된다. 
+    let selectValue = select_walklist.options[select_walklist.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
+    console.log(selectValue);
+    if(selectValue==="near"){
+        $('ul *').remove();
+        console.log(selectValue);
+        getNearWalk();
+    }else{
+        $('ul *').remove();
+        console.log(selectValue);
+        getRecWalk();
+    }
+}
+
+
+
+
 //최근 등록된 
 
 
@@ -37,13 +52,6 @@ const getNearWalk=async()=>{
     }
 
 
-// const value=select_walklist.options[select_walklist.selectedIndex].value;
-// console.log(value);
-if(true){
-    getRecWalk();
-    
-}else{
-    getNearWalk();
-}
 
+    
 

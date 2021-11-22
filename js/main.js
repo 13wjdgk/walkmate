@@ -1,3 +1,4 @@
+
 //최근 등록된 
 const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
