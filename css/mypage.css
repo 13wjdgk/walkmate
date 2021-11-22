@@ -1,16 +1,22 @@
 /* 웰컴체 */
+body {
+    margin: 0%;
+}
 /*마이페이지 바*/
 .mypageBar {
     background-color: #448aff;      /* 색깔 */
     width:100%;                       /* 가로 */
-    height: 10rem;                    /* 세로 */
+    height: 12rem;                    /* 세로 */
     margin: 0 auto;                   /* margin 0 = 여백없이, auto = 가로 중앙 배치 + 좌우 여백 균등 배분  */
     position:relative;                /* relative = 태그 위치 변경 가능 */
-    text-align: center;
+    text-align: center;               /* 텍스트 중앙 배치 */
   }
 
 h1{
-    padding: 5rem;
+    color: #fff;                    /* 폰트 색상 설정 */
+    font-size:3rem;                   /* 폰트 크기 설정 */
+    text-shadow: 2px 3px 0 #000;    /* x축 y축 blur값 색상값 */
+    padding-top: 4rem;                /* 텍스트 위치 변경 */
 }
 
 .container{
