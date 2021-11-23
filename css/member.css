@@ -69,6 +69,12 @@ input[type="submit"], input[type="reset"] {  /* 두 type의  input 요소에 적
   background-color: transparent;
  
 }
+
+input[type="submit"]:hover{ color:white; background-color: #448AFF; }
+input[type="reset"]:hover{ color:white; background-color: #448AFF; }
+
+textarea:focus,input:focus {outline:none;}
+
 input[type="submit"] {                       /* type="submit"인 input 요소에 적용할 스타일 */
   margin-right:20px;                         /* 오른쪽 마진 */
 }    
