@@ -41,7 +41,7 @@ try {
     if($applyQuery -> rowCount() > 0) {
         $applyResult = $applyQuery -> fetchAll(PDO::FETCH_ASSOC);
         foreach($applyResult as $value) {
-            if($value['memberKey'] === $_SESSION['user_key']) {
+            if($value['memberKey'] === $_SESSION['userKey']) {
                 $flag = false;
                 break;
             }

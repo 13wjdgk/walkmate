@@ -31,7 +31,7 @@ const getHostWalkList=async()=>{
 
     const list = await axios.get("../php/walk/getHostWalkList.php",{
     });
-
+    
     if(list.data.walksCount){           
         const apply=async(walkKey,userKey)=>{
             const apply_post = await axios.post("../php/walk/confirmApply.php",{
@@ -43,13 +43,14 @@ const getHostWalkList=async()=>{
             });
         };
         for(let i=0;i<list.data.walksCount;i++){
-            const memberlist=list.data.walks.memberList;
-            const applylist=list.data.walks.applyList;
+            const memberlist=list.data.walks[i].memberList;
+            const applylist=list.data.walks[i].applyList;
             console.log(memberlist);
-            $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p><div class=".reco"><h5>신청한 사람</h5></div></li>');                        
+            $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p><div class=".reco"><h5>신청한 사람</h5></div></li>');    
+            console.log(memberlist);                    
             if(memberlist) {
                 for(let j=0;j<memberlist.length;j++){    
-                    $('.reco' ).append('<div><h6>-'+list.data.walks.memberList[j].nickname+'</h6> <a href="#" onclick="apply('+list.data.walks[i].walkKey+','+list.data.walks.memberList[j].userKey+');">승인하기</a></div>');    
+                    $('.reco' ).append('<div>'+`<h6>dfjslf${memberlist[0].nickname}</h6>` +`<a href="#" onclick="apply(${list.data.walks[i].walkKey},${list.data.walks[i].memberList[j].userKey});">승인하기</a></div>`);    
                 }
             }
             $('.reco' ).append('<h5>승인된 사람</h5>');
