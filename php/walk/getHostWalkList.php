@@ -74,5 +74,3 @@ try {
 
 echo json_encode($resArray, $__JSON_FLAGS|JSON_FORCE_OBJECT);
 unset($database);
-
-?>
