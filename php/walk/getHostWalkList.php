@@ -4,7 +4,6 @@
 session_start();
 require_once("dbConfig.php");
 
-//$_POST = json_decode(file_get_contents("php://input"), true);
 $resArray = array('isSuccess' => false);
 
 
@@ -21,7 +20,8 @@ try {
 
     $userAddr = $getAddrQuery -> fetch(PDO::FETCH_ASSOC);
 
-    $getWalksSql = "SELECT *, HAVERSINE(depLatitude, depLongitude, :lat, :long) AS distance FROM walk WHERE hostKey = :hostKey ORDER BY writeTime DESC";
+    $getWalksSql = "SELECT *, HAVERSINE(depLatitude, depLongitude, :lat, :long) AS distance 
+                    FROM walk WHERE hostKey = :hostKey ORDER BY writeTime DESC";
     $getWalksQuery = $database -> prepare($getWalksSql);
 
     $getWalksQuery -> bindValue(':lat', $userAddr['addrLatitude'], PDO::PARAM_STR);
@@ -30,10 +30,43 @@ try {
 
     execQuery($getWalksQuery);
 
+    $walkList = $getWalksQuery -> fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($walkList as $walk) {
+        if(!isset($walkKeyString)) {
+            $walkKeyString = $walk['walkKey'];
+        } else {
+            $walkKeyString .= ',' . $walk['walkKey'];
+        }
+    }
+
+    //echo $walkKeyString;
+    $getMemberSql = "SELECT * FROM memberlist WHERE walkKey IN ({$walkKeyString})";
+    $getMemberQuery = $database -> prepare($getMemberSql);
+
+    execQuery($getMemberQuery);
+    if($getMemberQuery -> rowCount() > 0) {
+        $memberList = $getMemberQuery -> fetchAll(PDO::FETCH_GROUP|PDO::FETCH_ASSOC);
+    }
+
+    $getApplySql = "SELECT * FROM applylist WHERE walkKey IN ({$walkKeyString})";
+    $getApplyQuery = $database -> prepare($getApplySql);
+
+    execQuery($getApplyQuery);
+    if($getApplyQuery -> rowCount() > 0) {
+        $applyList = $getApplyQuery -> fetchAll(PDO::FETCH_GROUP|PDO::FETCH_ASSOC);
+    }
+
+    foreach($walkList as $key => $value) {
+        if(isset($memberList[$value['walkKey']]))
+                $walkList[$key]['memberList'] = $memberList[$value['walkKey']];
+        if(isset($applyList[$value['walkKey']]))
+            $walkList[$key]['applyList'] = $applyList[$value['walkKey']];
+    }
+
     $resArray['isSuccess'] = true;
     $resArray['walksCount'] = $getWalksQuery -> rowCount();
-    $resArray['walks'] = $getWalksQuery -> fetchAll(PDO::FETCH_ASSOC);
-
+    $resArray['walks'] = $walkList;
 } catch (Exception $e) {
     $resArray['code'] = $e -> getCode();
     $resArray['errorDetail'] = $e -> getMessage();
@@ -41,5 +74,3 @@ try {
 
 echo json_encode($resArray, $__JSON_FLAGS|JSON_FORCE_OBJECT);
 unset($database);
-
-?>
