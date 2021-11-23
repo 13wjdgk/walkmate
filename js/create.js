@@ -3,16 +3,16 @@ const createWriting = async () => {
     const maxMemberCount = document.querySelector(".maxMemberCount").value;
     const description = document.querySelector(".description").value;
     const depTime = document.querySelector(".depTime").value;
-    var depLocation = getDataFromDrawingMap();
-    var depLatitude = depLocation.marker[0].y;
-    var depLongitude = depLocation.marker[0].x;
-    alert(JSON.stringify(depLocation));
-    if (title && depTime && maxMemberCount && depLocation) {
+    const depLatitude = document.getElementById('getAddress_Ma').value;
+    const depLongitude = document.getElementById('getAddress_La').value;
+    if (title && depTime && maxMemberCount && description&&depLongitude&&depLatitude) {
         console.log(title);
         console.log(maxMemberCount);
         console.log(description);
         console.log(depTime);
-        console.log(depLocation);
+        console.log(description);
+        console.log(depLongitude);
+        console.log(depLatitude);
         try {
             const response = await axios.post("../php/walk/writeWalk.php", {
                 title: title,
