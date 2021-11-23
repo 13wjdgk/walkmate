@@ -49,14 +49,17 @@ li {                                  /* 모든 li 요소에 적용할 스타일
     width: fit-content;               /* 내용에 맞게 가로 설정 */
 }
 input[type="submit"], input[type="button"] {   /* 두 type 의 input 요소에 적용할 스타일 */
-    text-align:center;                         /* 텍스트 중앙 정렬 */
+    text-align:center;                         /*텍스트 중앙 정렬 */
     width:6rem;                                /* 너비 */
     height:2rem;                               /* 높이 */    
-    background-color:#448aff;                /* 배경색 */
-    border:0.1rem solid #000;                /* 테두리 */
-    color: #fff;                             /* 글자색 */
-    border-radius: 0.5rem;                     /* 테두리 가장자리 둥근 정도 */
+
+    margin-top: 1rem;
+    border: #448AFF 1px solid;
+    border-radius: 2%;
+    background-color: transparent;
 }
+
+
 input[type="button"] {
     margin-top: 12rem;                         /* 회원가입 위치 설정 */
 }

@@ -12,16 +12,31 @@ body {
 #contents {
     background-color: #448aff;      /* 색깔 */
     width:100%;                       /* 가로 */
-    height: 18rem;                    /* 세로 */
-    margin: 0 auto;                   /* margin 0 = 여백없이, auto = 가로 중앙 배치 + 좌우 여백 균등 배분  */
-    position:relative;                /* relative = 태그 위치 변경 가능 */
-    text-align: center;
-
+    height: 300px;                    /* 세로 */
+    display: flex;
+    justify-content: center;
+    align-content: center;  
 }
+
+.picnic {
+    margin-left: 30px;
+    height: 180px;
+    margin-top: 50px;
+  }
+  
+.picnicbar {
+    height: 100px;
+    color: #fff;
+    font-size: 3.1rem;
+    text-shadow: 2px 3px 0 #000; /* x축 y축 blur값 색상값 */
+    padding-top: 5rem;
+    margin-top: 10px;
+  }
+  
 
 h1 {
     color: #fff;
-    font-size:50px;
+    font-size:3.1rem;
     text-shadow: 2px 3px 0 #000;    /* x축 y축 blur값 색상값 */  
     padding-top: 5rem;
 }
