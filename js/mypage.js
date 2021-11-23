@@ -27,39 +27,49 @@ const getApplyWalkList=async()=>{
                     $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 :  '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>');};
                 }
 }
-const getHostWalkList=async()=>{
 
+const apply = (walkKey, userKey) => {
+    axios.post("../php/walk/confirmApplyWalk.php", {
+            walkKey: walkKey,
+            confirmData : {
+                userKey: userKey,
+                isAccept: true
+        }
+    }).then((res) => {
+        if(res.data.isSuccess) {
+            alert("성공");
+        } else {
+            console.log(res.data);
+        }
+    })
+    .catch((error) => {
+        console.log(error.data);
+    })
+};
+
+const getHostWalkList=async()=>{
     const list = await axios.get("../php/walk/getHostWalkList.php",{
     });
 
     if(list.data.walksCount){           
-        const apply=async(walkKey,userKey)=>{
-            const apply_post = await axios.post("../php/walk/confirmApply.php",{
-                walkKey: walkKey,
-                confirmData : {
-                userKey: userKey,
-                isAcccept: true
-            }
-            });
-        };
         for(let i=0;i<list.data.walksCount;i++){
-            const memberlist=list.data.walks.memberList;
-            const applylist=list.data.walks.applyList;
-            console.log(memberlist);
-            $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p><div class=".reco"><h5>신청한 사람</h5></div></li>');                        
-            if(memberlist) {
-                for(let j=0;j<memberlist.length;j++){    
-                    $('.reco' ).append('<div><h6>-'+list.data.walks.memberList[j].nickname+'</h6> <a href="#" onclick="apply('+list.data.walks[i].walkKey+','+list.data.walks.memberList[j].userKey+');">승인하기</a></div>');    
-                }
-            }
-            $('.reco' ).append('<h5>승인된 사람</h5>');
-            
+            const memberlist=list.data.walks[i].memberList;
+            const applylist=list.data.walks[i].applyList;
+            $('ul' ).append(`<li><a href="http://localhost/html/detail.html?walkKey=${list.data.walks[i].walkKey}"><p class="li_h">${list.data.walks[i].title}</p></a><p style="color: gray;">인원 : ${list.data.walks[i].maxMemberCount}명 날짜 : ${list.data.walks[i].depTime}</p><div id="reco${i}" class="reco"><h5>신청한 사람</h5></div></li>`);                        
+
             if(applylist) {
-                for(let j=0;j<applylist.length;j++){    
-                    $('.reco' ).append('<div><h6>-'+list.data.walks.applyList[j].nickname+'</h6></div>');    
+                for(let apply in applylist){  
+                    $(`#reco${i}`).append('<div><h6>-'+applylist[apply].nickname+'</h6> &nbsp;&nbsp;&nbsp; <a href="#" onclick="apply('+list.data.walks[i].walkKey+','+applylist[apply].memberKey+');">승인하기</a></div>');
                 }
             }
-                    
+
+            $(`#reco${i}`).append('<h5>승인된 사람</h5>');
+
+            if(memberlist) {
+                for(let member in memberlist){   ;
+                    $(`#reco${i}`).append('<div><h6>-'+memberlist[member].nickname+'</h6></div>'); 
+                }
+            }
         }            
     }
 }
