@@ -32,7 +32,6 @@
     </div>
     <!-- contents -->
     <div class="container">
-        <!-- 지도  -->
         <div class="container_item">
             <p>*지도에서 위치를 확인하세요!</p>
             <div id="staticMap" style="width:800px;height:400px;"></div>
@@ -71,7 +70,9 @@
                     //위도, 경도
                     depLatitude = data.body.depLatitude;
                     depLongitude = data.body.depLongitude;
+
                     //정적지도에 마커를 표시하기 위해 위도와 경도로 좌표객체로 만들어줌
+
                     var markerPosition  = new kakao.maps.LatLng(depLatitude, depLongitude); 
 
                     // 이미지 지도에 표시할 마커
@@ -126,7 +127,6 @@
 
             </script>
         </div>
-        <!-- 오른쪽 디테일 내용 보이기 -->
         <div class="container_item">
             <div class="container_item_in">
                 <div style="margin-bottom: 2rem;">
