@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--신재형(로그인 페이지 설정)-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,15 +38,15 @@
       <div class="login">
         <ul id="loging">
           <li>
-            <label for="user-name">아이디 </label>
-            <input type="text" id="user_id"  required>
+            <label for="user-name">아이디 </label>        <!--input태그를 정의하기 위해 label 태그 사용-->
+            <input type="text" id="user_id"  required>    <!--input태그 사용으로 정보를 받아들이고required사용으로 미입력시 알림뜨게 설정-->
           </li>
           <li>
             <label for="password">비밀번호 </label>
             <input type="password" id="user_pw"  required>
           </li>
         </ul>
-            <input type="submit" value="로그인" onclick="login();self.location='./main.html'">
+            <input type="submit" value="로그인" onclick="login();self.location='./main.html'"> <!--로그인 버튼을 누르면 메인페이지로 넘어가게 설정-->
       </div>
     </div>
   </body>
