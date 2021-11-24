@@ -12,7 +12,7 @@ const getRecWalk=async()=>{
             $('.rec' ).append('<a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><li>'+list.data.walks[i].title+'</li></a>' );}
         }
 }
-//가까운 거리 게시물 가져오기
+//가까운 거리 게시물 가져오기 write 고수민
 const getNearWalk=async()=>{
     let nearList = '';
     const list = await axios.post("../php/walk/getRecWalkList.php",{
