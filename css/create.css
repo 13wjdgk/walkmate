@@ -1,3 +1,4 @@
+/* write 김가은 */
 /* 웰컴체 */
 @font-face {
     font-family: 'OTWelcomeRA';
@@ -80,4 +81,3 @@ button{
 }
 button:hover{ color:white; background-color: #448AFF; }
 textarea:focus,input:focus {outline:none;}
-

@@ -1,4 +1,5 @@
-//최근 등록된 
+//main.js write 김가은
+//최근 등록된 게시물 가져오기
 const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
         requireCount: 10, //한번에 몇개씩
@@ -11,7 +12,7 @@ const getRecWalk=async()=>{
             $('.rec' ).append('<a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><li>'+list.data.walks[i].title+'</li></a>' );}
         }
 }
-//가까운 거리
+//가까운 거리 게시물 가져오기
 const getNearWalk=async()=>{
     let nearList = '';
     const list = await axios.post("../php/walk/getRecWalkList.php",{
@@ -27,8 +28,9 @@ const getNearWalk=async()=>{
             nearList += '<a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><li>'+list.data.walks[i].title+'</li></a>';
         }
     }
+    //가까운 산책은 회원가입이 되어 있을 때만 떠야 함
+    //php 파일을 통해 현재 로그인 상태인지 확인 하고 리스트를 띄움
     const account = await axios.get("../php/account/checkSession.php");
-    console.log(account.data[0].real_id);
     if(account.data[0].real_id){
         $('.lists' ).append('<div class = "list2"><ol class="near"><h3>가까운 산책</h3></ol>'+nearList+'</div>');
     }

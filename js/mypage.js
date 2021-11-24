@@ -1,24 +1,18 @@
-
+//mypage.js write 김가은
 function chageLangSelect(){ 
     let select_walklist = document.getElementById("select_walklist"); // select element에서 선택된 option의 value가 저장된다. 
     let selectValue = select_walklist.options[select_walklist.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
-    console.log(selectValue);
-    if(selectValue==="apply"){
+    if(selectValue==="apply"){       // select가 신청한 게시물일 때
         $('ul *').remove();
-        console.log(selectValue);
         getApplyWalkList();
-    }else if(selectValue==="host"){
+    }else if(selectValue==="host"){   // select가 작성한 게시물일  때
         $('ul *').remove();
-        console.log(selectValue);
         getHostWalkList();
-    }else{
+    }else{                              // select가 신청 승인된 게시물일  때
         $('ul *').remove();
-        console.log(selectValue);
         getJoinWalkList();
     }
 }
-const getDetailURL ='http://localhost/html/detail.html?';
-//최근 등록된   confirmApplyWalk.php
 //내가 신청한 게시글
 const getApplyWalkList=async()=>{
     const list = await axios.get("../php/walk/getApplyWalkList.php",{
@@ -28,7 +22,7 @@ const getApplyWalkList=async()=>{
                     $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 :  '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>');};
                 }
 }
-
+//승인하기 버튼 함수
 const apply = (walkKey, userKey) => {
     axios.post("../php/walk/confirmApplyWalk.php", {
             walkKey: walkKey,
@@ -48,6 +42,7 @@ const apply = (walkKey, userKey) => {
     })
 };
 
+// 내가 작성한 게시물 리스트 가져오기 write 김남혁
 const getHostWalkList=async()=>{
     const list = await axios.get("../php/walk/getHostWalkList.php",{
     });
@@ -74,6 +69,8 @@ const getHostWalkList=async()=>{
         }            
     }
 }
+
+//승인된 게시글 가져오기 write 김가은
 const getJoinWalkList=async()=>{
     const list = await axios.get("../php/walk/getJoinWalkList.php",{
     });
@@ -85,4 +82,3 @@ const getJoinWalkList=async()=>{
                 }
 }
 getJoinWalkList();
-
