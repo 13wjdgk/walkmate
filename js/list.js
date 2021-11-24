@@ -22,7 +22,7 @@ const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
         requireCount: 10, //한번에 몇개씩
         walkListCount: 0, //지금까지 몇개를 불러왔는지
-        requestTime: "2021-11-30 10:00:00"
+        requestTime: getNow()
     });
     console.log(list.data.walksCount);
     if(list.data.walksCount){
@@ -37,8 +37,8 @@ const getNearWalk=async()=>{
     const list = await axios.post("../php/walk/getRecWalkList.php",{
         requireCount: 10, //한번에 몇개씩
         walkListCount: 0, //지금까지 몇개를 불러왔는지
-        requestTime: "2021-11-30 10:00:00",
-        limitDistance: 1.0
+        requestTime: getNow(),
+        limitDistance: 4.0
     });
     console.log(list);
     if(list.data.walksCount){
