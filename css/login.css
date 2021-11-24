@@ -60,4 +60,8 @@ input[type="submit"]:hover{ color:white; background-color: #448AFF; } /* hover�
 
 textarea:focus,input:focus {outline:none;}                                /* 입력칸 테두리 없애기 */
 
-/*로그인*/
+input[type="submit"]:hover{ color:white; background-color: #448AFF; }
+input[type="button"]:hover{ color:white; background-color: #448AFF; }
+
+textarea:focus,input:focus {outline:none;}
+

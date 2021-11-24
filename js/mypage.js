@@ -82,4 +82,3 @@ const getJoinWalkList=async()=>{
                 }
 }
 getJoinWalkList();
-
