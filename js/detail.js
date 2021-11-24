@@ -42,3 +42,4 @@ const applyWalk = async () => {
         }
     }
 }
+

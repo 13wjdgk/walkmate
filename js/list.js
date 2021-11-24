@@ -1,3 +1,4 @@
+
 window.onload = function() {
     chageLangSelect();
 }
@@ -51,10 +52,5 @@ const getNearWalk=async()=>{
         for(var i=0;i<list.data.walksCount;i++){
             console.log(list.data.walks[i].title);
             $('ul' ).append('<li><a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
-        }
     }
-
-
-
-    
-
+}
