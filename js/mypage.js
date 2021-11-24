@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function chageLangSelect(){ 
     let select_walklist = document.getElementById("select_walklist"); // select element에서 선택된 option의 value가 저장된다. 
     let selectValue = select_walklist.options[select_walklist.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
