@@ -1,3 +1,4 @@
+//detail.js write 고수민
 // 삭제하기 버튼을 눌렀을 때 실행될 함수
 const deleteWalk = async () => {
     //getWalkKey 함수를 통해 산책 글의 primary key값 받아오기

@@ -21,7 +21,6 @@ const getNearWalk=async()=>{
         requestTime: "2021-11-30 10:00:00",
         limitDistance: 1.0
     });
-    console.log(list);
     if(list.data.walksCount){
         for(var i=0;i<list.data.walksCount;i++){
             console.log(list.data.walks[i].title);
