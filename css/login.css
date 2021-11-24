@@ -1,7 +1,9 @@
-/*폰트 설정 div*/
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-div {
-    font-family: 'Nanum Gothic', sans-serif;
+/* 웰컴체 */
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 body {
     margin: 0%;
@@ -56,6 +58,12 @@ input[type="submit"], input[type="button"] {   /* 두 type 의 input 요소에 �
     border-radius: 2%;
     background-color: transparent;
 }
+
+input[type="submit"]:hover{ color:white; background-color: #448AFF; }
+
+textarea:focus,input:focus {outline:none;}
+
+
 
 
 /*로그인*/

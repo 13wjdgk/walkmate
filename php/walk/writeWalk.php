@@ -9,7 +9,7 @@ $_POST = json_decode(file_get_contents("php://input"), true);
 $resArray = array('isSuccess' => false);
 
 try {
-    if(!isset($_SESSION['userKey'])) {
+    if(!isset($_SESSION['userKey'])) { // 로그인 체크
         throw new Exception("로그인 세션 없음", 2);
     }
 
@@ -25,6 +25,11 @@ try {
     $description = $_POST['description'];
     $depTime = $_POST['depTime'];
 
+    if($depTime < date("Y-m-d H:i:s")) { // 출발 시간이 현재 시간 이전인 경우
+        throw new Exception("잘못된 시간", 6);
+    }
+
+    // 새로운 글 내용 INSERT
     $param = array(':hostKey' => $hostKey, ':hostID' => $hostID, ':hostNickname' => $hostNick, ':title' => $title,
                     ':depLatitude' => $depLatitude, ':depLongitude' => $depLongitude, ':maxMemberCount' => $maxMemberCount,
                     ':description' => $description, ':depTime' => $depTime);
@@ -44,8 +49,10 @@ try {
     }
     execQuery($insQuery);
 
-    $walkKey = $database -> query("SELECT LAST_INSERT_ID()") -> fetch(PDO::FETCH_COLUMN);
-    $memberSql = "INSERT INTO memberList (walkKey, memberKey, memberID, nickname, joinTime) 
+    $walkKey = $database -> query("SELECT LAST_INSERT_ID()") -> fetch(PDO::FETCH_COLUMN); // 마지막으로 작성된 글의 키 값
+    
+    // 글 작성자도 참가자이므로 참가자 DB에 작성자 내용 INSERT
+    $memberSql = "INSERT INTO memberlist (walkKey, memberKey, memberID, nickname, joinTime) 
             VALUES (:walkKey, :memberKey, :memberID, :nickname, NOW())";
 
     $memberParam = array(':walkKey' => $walkKey, ':memberKey' => $hostKey, ':memberID' => $hostID, ':nickname' => $hostNick);
