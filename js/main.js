@@ -1,4 +1,5 @@
-//최근 등록된 
+//main.js write 김가은
+//최근 등록된 게시물 가져오기
 const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
         requireCount: 10, //한번에 몇개씩
@@ -11,7 +12,7 @@ const getRecWalk=async()=>{
             $('.rec' ).append('<a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><li>'+list.data.walks[i].title+'</li></a>' );}
         }
 }
-//가까운 거리
+//가까운 거리 게시물 가져오기
 const getNearWalk=async()=>{
     let nearList = '';
     const list = await axios.post("../php/walk/getRecWalkList.php",{

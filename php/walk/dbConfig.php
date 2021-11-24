@@ -4,13 +4,15 @@
 //error_reporting(E_ALL);
 //ini_set("display_errors", 1); // 디버그 용 오류 echo 설정 (배포시 주석처리)
 
-require_once("dbAccount.php"); // $__dsn, $__dbUserName, $__dbPassword 노출 방지
 
-/*
-$__dsn = "mysql:host=DB IP;dbname=DB NAME;charset=DB ENCODING";
-$__dbUserName = "DB 아이디";
-$__dbPassword = "DB 비밀번호";
-*/
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1); // 디버그 용 오류 echo 설정 (배포시 주석처리)
+
+$__dsn = "mysql:host=localhost;dbname=walkmate;charset=utf8mb4";
+$__dbUserName = "root";
+$__dbPassword = "kk6786"; // $__dsn, $__dbUserName, $__dbPassword 노출 방지
+
 
 header("Content-Type:application/json");
 

@@ -1,4 +1,4 @@
-
+//signup.js write 김가은
 const signup=async()=>{
     var addr;
     addr = addrPass();
@@ -12,15 +12,6 @@ const signup=async()=>{
     if(gender=="female"){
         gender=1;
     }else{gender=0;}
-    console.log(id);
-    console.log(user_pw);
-    console.log(nickname);
-    console.log(addr.getLat());
-    console.log(addr.getLng());
-    console.log(mail);
-    console.log(phone);
-    console.log(birth);
-    console.log(gender);
     const addrLatitute = addr.getLat();
     const addrLongitude = addr.getLng();
     if(id&&user_pw&&nickname&&addr&&mail&&phone&&birth&&(gender!=null)){
