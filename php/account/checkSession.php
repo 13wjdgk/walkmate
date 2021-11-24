@@ -1,3 +1,4 @@
+<!-- 세션이 유효한지 검사 write 김가은 -->
 <?php
 require_once("dbconfig.php");
 session_start();

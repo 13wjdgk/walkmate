@@ -1,4 +1,4 @@
-
+//signup.js write 김가은
 const signup=async()=>{
     // addrPass에서 member.html의 kakao.maps.event.addListener 함수를 통해 클릭한 곳의 위도, 경도값을 가져옴
     var addr;
@@ -13,6 +13,7 @@ const signup=async()=>{
     if(gender=="female"){
         gender=1;
     }else{gender=0;}
+
     //객체에서 위도,경도 값을 가져오는 kakao map 라이브러리에서 제공하는 함수 사용
     const addrLatitute = addr.getLat();
     const addrLongitude = addr.getLng();

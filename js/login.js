@@ -1,6 +1,7 @@
+//login.js wirte 김가은
 const login=async()=>{
-    const user_id=document.getElementById("user_id").value;
-    const user_pw=document.getElementById("user_pw").value;
+    const user_id=document.getElementById("user_id").value; //입력된 id
+    const user_pw=document.getElementById("user_pw").value; //입력된 pw
     if(user_id&&user_pw){
         try{
             const account = await axios.post("../php/account/login.php",{

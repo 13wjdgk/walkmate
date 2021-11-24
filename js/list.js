@@ -1,3 +1,5 @@
+
+//list js write 김가은
 //페이지가 로드되면 chageLangSelect 함수 실행
 window.onload = function() {
     chageLangSelect();
@@ -5,26 +7,17 @@ window.onload = function() {
 function chageLangSelect(){ 
     let select_walklist = document.getElementById("select_walklist"); // select element에서 선택된 option의 value가 저장된다. 
     let selectValue = select_walklist.options[select_walklist.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
-    console.log(selectValue);
-    if(selectValue==="near"){
+    if(selectValue==="near"){ //select가 가까운 산책물일 때 리스트를 불러옴
         $('ul *').remove();
-        console.log(selectValue);
         getNearWalk();
-    }else{
+    }else{                  //select가 최근 산책물일 때 리스트를 불러옴
         $('ul *').remove();
-        console.log(selectValue);
+
         getRecWalk();
     }
 }
 
-
-
-
 //최근 등록된 
-
-
-const getDetailURL ='http://localhost/html/detail.html?';
-
 const getRecWalk=async()=>{
     const list = await axios.post("../php/walk/getWalkList.php",{
         requireCount: 10, //한번에 몇개씩
@@ -35,7 +28,7 @@ const getRecWalk=async()=>{
     if(list.data.walksCount){
         
         for(var i=0;i<list.data.walksCount;i++){
-            
+            // 받아온 객체마다 html에 출력
             $('ul' ).append('<li><a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
         }
 }
@@ -51,6 +44,7 @@ const getNearWalk=async()=>{
     if(list.data.walksCount){
         for(var i=0;i<list.data.walksCount;i++){
             console.log(list.data.walks[i].title);
+            // 받아온 객체마다 html에 출력
             $('ul' ).append('<li><a href="'+'./detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 : '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>' );};
     }
 }
