@@ -9,9 +9,7 @@ $user_pw=$_POST["user_pw"];
 $sql = "SELECT * FROM account WHERE real_id ='$user_id'";
 $res = $db->query($sql);
 $row = $res->fetch_array(MYSQLI_ASSOC);
-echo $sql;
 if($row){
-    echo "로그인 성공";
     
     $passwordResult = password_verify($user_pw, $row['pw']);
     // $_SESSION['userPw'] = $user_pw; ==> Security Problem
@@ -29,7 +27,7 @@ if($row){
 
     echo $_SESSION['userId'];
 } else {            // 만약 참이 아니면 로그인 실패
-   echo "로그인실패";
+   echo false;
 }
  mysqli_close($db);
 ?>

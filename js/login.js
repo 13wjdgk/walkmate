@@ -8,11 +8,15 @@ const login=async()=>{
                 user_pw:user_pw
             });
             if(account.data){
-                 console.log(account.data);
-            }else{ console.log("입력 실패");
+                console.log(account.data);
+                self.location='./main.html';
+            }
+            else{ 
+                console.log("입력 실패");
+                alert("로그인에 실패하셨습니다.");
+            }
         }
-           
-        }catch(error){
+        catch(error){
             console.log(error);
         }
     }

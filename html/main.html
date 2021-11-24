@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/nav.js"></script>
+    <script src="../js/main.js"></script>
       <!-- axios -->
 
 </head>
@@ -18,7 +19,7 @@
     <div class="nav">
         <a class="logo" href="./main.html">wɔːk meɪt</a>
         <div class="menu">
-            <a class="menu_a" href="./create.html">산책메이트 구하기</a>
+            <a class="menu_a" href="#" onclick="checkLogin()">산책메이트 구하기</a>
             <a class="menu_a" href="./list.html">산책메이트 찾기</a>
         </div>
     </div>
@@ -27,31 +28,25 @@
 
     <!-- 메인 -->
     <div id ="contents">
-        <h1>
+        <img src = "../img/산책.PNG" class = "picnic">
+        <div class="picnicbar">
         산책 메이트! <br>
         이젠 쉽게 구해요!
-        </h1>
+        </div>
     </div>
 
     <div class = "lists">
         <div class = "list1">   
-            <ol> 
-                <h3>나의 맞춤 산책</h3>
-                <li>경상대 후문</li>
-                <li>경상대 정문</li>
-                <li>가호동</li>
-                <li>호탄동</li>
+            <ol class="rec"> 
+                <h3>최근 등록된 산책</h3>
+                <!-- <a href="./detail.html"><li>'+list.data.walks[i].title+'</li></a>  -->
             </ol>
         </div>
-        <div class = "list2">
-            <ol>
-                <h3>가까운 산책</h3>
-                <li>경상대 후문 산책할 분 구합니다</li>
-                <li>경상대 정문 산책할 분 구합니다</li>
-                <li>가호동 산책할 분 구합니다</li>
-                <li>호탄동 산책할 분 구합니다</li>
+        <!-- <div class = "list2">
+            <ol class="near">
+                <h3>가까운 산책</h3>  
             </ol>
-        </div>
+        </div> -->
     </div>  
 
 </body>

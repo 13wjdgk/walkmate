@@ -4,7 +4,9 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1); // 디버그 용 오류 echo 설정 (배포시 주석처리)
 
-require_once("dbAccount.php"); // $__dsn, $__dbUserName, $__dbPassword 노출 방지
+$__dsn = "mysql:host=localhost;dbname=walkmatedb;charset=utf8mb4";
+$__dbUserName = "root";
+$__dbPassword = "wpslxm20"; // $__dsn, $__dbUserName, $__dbPassword 노출 방지
 
 header("Content-Type:application/json");
 

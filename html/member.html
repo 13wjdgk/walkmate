@@ -12,7 +12,7 @@
     <script src="../js/nav.js"></script>
     <script src="../js/signup.js"></script>
 
-    <source src="../js/member.js" type="">
+    
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -57,11 +57,9 @@
     <div class="nav">
         <a class="logo" href="./main.html">wɔːk meɪt</a>
         <div class="menu">
-          <a class="menu_a" href="./create.html">산책메이트 구하기</a>
+          <a class="menu_a" href="#" onclick="checkLogin()">산책메이트 구하기</a>
           <a class="menu_a" href="./list.html">산책메이트 찾기</a>
-          <a class="menu_a" href="./login.html">로그인</a>/<a class="menu_a" href="./member.html">회원가입</a>
-          <img class="notice"src="../img/알림.png" alt="알림"></a>
-          <!-- <a class="menu_a" href="./mypage.html">마이페이지</a> -->
+         
           
           
         </div>
@@ -154,7 +152,9 @@
             }
             
             // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+            let firstCount = 0;
             function placesSearchCB(data, status, pagination) {
+                
                 if (status === kakao.maps.services.Status.OK) {
             
                     // 정상적으로 검색이 완료됐으면
@@ -165,10 +165,12 @@
                     displayPagination(pagination);
             
                 } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-            
-                    alert('검색 결과가 존재하지 않습니다.');
-                    return;
-            
+                    if(firstCount==0){
+                        firstCount++;
+                    }else {
+                        alert('검색 결과가 존재하지 않습니다.');
+                        return;
+                    }
                 } else if (status === kakao.maps.services.Status.ERROR) {
             
                     alert('검색 결과 중 오류가 발생했습니다.');
@@ -374,7 +376,7 @@
           </li>        
           <li>
             <label for="phone">연락처</label>
-            <input type="tel" id="phone" placeholder="-빼고 입력해 주세요.(ex.01012345678)" required>
+            <input type="tel" id="phone" maxlength='11' placeholder="-빼고 입력해 주세요.(ex.01012345678)" required>
           </li>
           <li>
             <label for="birth">생년월일</label>
@@ -391,7 +393,7 @@
       
       <div class = "button">
         <input type="submit" value="가입하기" onclick="signup();"> 
-        <input type="reset" value="취소하기">
+        <input type="reset" value="취소하기" onclick="self.location='./main.html';">
       </div>        
 
     

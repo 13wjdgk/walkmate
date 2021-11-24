@@ -10,24 +10,29 @@ const signup=async()=>{
     const birth=document.getElementById("birth").value;
     let gender=document.querySelector('input[name="gift"]:checked').value; // 체크된 값(checked value)
     if(gender=="female"){
-        gender=true;
-    }else{gender=false;}
+        gender=1;
+    }else{gender=0;}
     console.log(id);
     console.log(user_pw);
     console.log(nickname);
-    console.log(addr);
+    console.log(addr.getLat());
+    console.log(addr.getLng());
     console.log(mail);
     console.log(phone);
     console.log(birth);
     console.log(gender);
+    const addrLatitute = addr.getLat();
+    const addrLongitude = addr.getLng();
     if(id&&user_pw&&nickname&&addr&&mail&&phone&&birth&&(gender!=null)){
+        
         console.log("데이터 들어옴");
         try{
             const account = await axios.post("../php/account/signup.php",{
                 user_id:id,
                 user_pw:user_pw,
                 nickname:nickname,
-                addr:addr,
+                addrLatitute: addrLatitute,
+                addrLongitude: addrLongitude,
                 mail:mail,
                 phone:phone,
                 birth:birth,
@@ -35,6 +40,7 @@ const signup=async()=>{
             });
             if(account.data){
                 console.log(account.data);
+                self.location='./login.html';
             }else{ console.log("입력 실패");}
            
         }catch(error){
