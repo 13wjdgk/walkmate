@@ -1,3 +1,4 @@
+// 로그인 유무에 따라 nav 바 변경 write 김가은 
 const session=async()=>{
     const account = await axios.get("../php/account/checkSession.php");
     console.log(account.data[0].real_id);

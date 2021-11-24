@@ -1,3 +1,4 @@
+<!-- logout php write 김가은 -->
 <?php
  
  session_start();

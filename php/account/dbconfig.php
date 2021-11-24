@@ -7,8 +7,8 @@ ini_set("display_errors",1);
 header("Content-Type:application/json");
 $host = 'localhost';
 $user = 'root';
-$pw = 'wpslxm20';
-$dbName = 'walkmatedb';
+$pw = 'kk6786';
+$dbName = 'walkmate';
 
 $db = new mysqli($host, $user, $pw, $dbName);
 
