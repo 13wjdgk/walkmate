@@ -1,5 +1,6 @@
 <?php 
-//Written by NamHyeok Kim
+// Written by NamHyeok Kim
+// 모집 글에 신청하는 기능
 
 session_start();
 require_once("dbConfig.php");
@@ -8,20 +9,20 @@ $_POST = json_decode(file_get_contents("php://input"), true);
 $resArray = array('isSuccess' => false);
 
 try {
-    if(!checkSession()) {
+    if(!isset($_SESSION['userKey'])) { // 로그인 체크
         throw new Exception("로그인 세션 오류", 2);
     }
 
     $targetWalkKey = $_POST['walkKey'];
 
-    $memberSql = "SELECT * FROM memberList WHERE walkKey = :walkKey";
+    //모집글에 참가, 신청 중인 유저 리스트를 받아와 순회하여 중복체크
+    $memberSql = "SELECT * FROM memberlist WHERE walkKey = :walkKey";
     $memberQuery = $database -> prepare($memberSql);
     $memberQuery -> bindValue(':walkKey', $targetWalkKey, PDO::PARAM_INT);
 
-    $flag = true;
-
     execQuery($memberQuery);
 
+    $flag = true;
     if($memberQuery -> rowCount() > 0) {
         $memberResult = $memberQuery -> fetchAll(PDO::FETCH_ASSOC);
         foreach($memberResult as $value) {
@@ -32,7 +33,7 @@ try {
         }
     }
 
-    $applySql = "SELECT * FROM applyList WHERE walkKey = :walkKey";
+    $applySql = "SELECT * FROM applylist WHERE walkKey = :walkKey";
     $applyQuery = $database -> prepare($applySql);
     $applyQuery -> bindValue(':walkKey', $targetWalkKey, PDO::PARAM_INT);
 
@@ -41,18 +42,19 @@ try {
     if($applyQuery -> rowCount() > 0) {
         $applyResult = $applyQuery -> fetchAll(PDO::FETCH_ASSOC);
         foreach($applyResult as $value) {
-            if($value['memberKey'] === $_SESSION['user_key']) {
+            if($value['memberKey'] === $_SESSION['userKey']) {
                 $flag = false;
                 break;
             }
         }
     }
 
-    if(!$flag) {
+    if(!$flag) { // 목록에서 같은 키 값을 찾은 경우
         throw new Exception("이미 신청 또는 참가 중", 4);
     }
     
-    $insSql = "INSERT applyList (walkKey, memberKey, memberID, nickname, applyTime) 
+    // 신청 쿼리
+    $insSql = "INSERT applylist (walkKey, memberKey, memberID, nickname, applyTime) 
             VALUES (:walkKey, :memberKey, :memberID, :nickname, NOW())";
     $insParam = array(':walkKey' => $targetWalkKey, ':memberKey' => $_SESSION['userKey'],
                         ':memberID' => $_SESSION['userId'], ':nickname' => $_SESSION['userNickname']);
@@ -67,6 +69,8 @@ try {
     }
     
     execQuery($insQuery);
+
+    // 참가 글 DB에 신청자 수 업데이트
     $countQuery = $database -> prepare("UPDATE walk SET applyMemberCount = applyMemberCount + 1 WHERE walkKey = :walkKey");
     $countQuery -> bindValue(':walkKey', $targetWalkKey, PDO::PARAM_INT);
     execQuery($countQuery);
