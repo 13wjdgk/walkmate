@@ -51,6 +51,8 @@ ul {                                /* 모든 ul 요소에 적용할 스타일 *
     height: 100%;
     width: 80%;
     margin: 0% auto;
+    margin-right: 10%;
+
 }
 
 .list2{
@@ -63,8 +65,7 @@ ul {                                /* 모든 ul 요소에 적용할 스타일 *
 }
 
 .lists{
-    display: grid;                                 /* 그리드 선언, Grid 전체 영역 */
-    grid-template-columns: 1fr 1fr;                /* 열의 크기 정의 */
+    display: flex;                                /* 열의 크기 정의 */
     margin: 5% 5%;                      
     line-height: 2;                                /* 글자 상하 간격 설정 */
     text-decoration: underline #488aff 0.2rem;      /* 밑줄 선언*/

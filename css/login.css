@@ -64,9 +64,12 @@ input[type="submit"]:hover{ color:white; background-color: #448AFF; }
 textarea:focus,input:focus {outline:none;}
 
 
-input[type="button"] {
-    margin-top: 8rem;                         /* 회원가입 위치 설정 */
-}
+
+
 /*로그인*/
 
+input[type="submit"]:hover{ color:white; background-color: #448AFF; }
+input[type="button"]:hover{ color:white; background-color: #448AFF; }
+
+textarea:focus,input:focus {outline:none;}
 
