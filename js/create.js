@@ -1,3 +1,4 @@
+// create.js write 고수민
 //산책메이트 구하기 글 올리는 함수
 const createWriting = async () => {
     // 글을 올리는데 필요한 변수들을 html에서 받아옴

@@ -1,4 +1,5 @@
 //signup.js write 김가은
+//signup.js write 고수민
 const signup=async()=>{
     // addrPass에서 member.html의 kakao.maps.event.addListener 함수를 통해 클릭한 곳의 위도, 경도값을 가져옴
     var addr;
