@@ -34,7 +34,7 @@ try {
     }
 
     // 신청 리스트 조회
-    $sql = "SELECT * FROM applyList WHERE walkKey = :walkKey AND memberKey = :memberKey";
+    $sql = "SELECT * FROM applylist WHERE walkKey = :walkKey AND memberKey = :memberKey";
     $getApplyQuery = $database -> prepare($sql);
     $getApplyQuery -> bindValue(':walkKey', $targetWalkKey, PDO::PARAM_INT);
     $getApplyQuery -> bindValue(':memberKey', $confirmData['memberKey'], PDO::PARAM_INT);
@@ -53,7 +53,7 @@ try {
             unset($app['applyTime']); // 신청서 내용에서 신청 시간만 삭제
             
             // 참가자 DB에 INSERT
-            $confirmSql = "INSERT INTO memberList(walkKey, memberKey, memberID, nickname, joinTime)
+            $confirmSql = "INSERT INTO memberlist(walkKey, memberKey, memberID, nickname, joinTime)
                             VALUES (:walkKey, :memberKey, :memberID, :nickname, NOW())";
             $confirmQuery = $database -> prepare($confirmSql);
             foreach($app as $key => $value) {

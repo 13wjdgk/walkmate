@@ -31,7 +31,7 @@ try {
         $resArray['isHost'] = true;
 
         // 참가자, 신청자 리스트 조회 후 추가
-        $memberSql = "SELECT * FROM memberList WHERE walkKey = :reqKey";
+        $memberSql = "SELECT * FROM memberlist WHERE walkKey = :reqKey";
         $memberQuery = $database -> prepare($memberSql);
         $memberQuery -> bindValue(':reqKey', $reqWalkKey, PDO::PARAM_INT);
         execQuery($memberQuery);

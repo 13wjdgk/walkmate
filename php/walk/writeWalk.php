@@ -52,7 +52,7 @@ try {
     $walkKey = $database -> query("SELECT LAST_INSERT_ID()") -> fetch(PDO::FETCH_COLUMN); // 마지막으로 작성된 글의 키 값
     
     // 글 작성자도 참가자이므로 참가자 DB에 작성자 내용 INSERT
-    $memberSql = "INSERT INTO memberList (walkKey, memberKey, memberID, nickname, joinTime) 
+    $memberSql = "INSERT INTO memberlist (walkKey, memberKey, memberID, nickname, joinTime) 
             VALUES (:walkKey, :memberKey, :memberID, :nickname, NOW())";
 
     $memberParam = array(':walkKey' => $walkKey, ':memberKey' => $hostKey, ':memberID' => $hostID, ':nickname' => $hostNick);
