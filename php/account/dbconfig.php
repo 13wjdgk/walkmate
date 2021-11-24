@@ -8,7 +8,7 @@ header("Content-Type:application/json");
 $host = 'localhost';
 $user = 'root';
 $pw = 'wpslxm20';
-$dbName = 'walkmatedb';
+$dbName = 'walkmate';
 
 $db = new mysqli($host, $user, $pw, $dbName);
 

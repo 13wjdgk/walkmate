@@ -6,11 +6,11 @@
 
 require_once("dbAccount.php"); // $__dsn, $__dbUserName, $__dbPassword 노출 방지
 
-/*
-$__dsn = "mysql:host=DB IP;dbname=DB NAME;charset=DB ENCODING";
-$__dbUserName = "DB 아이디";
-$__dbPassword = "DB 비밀번호";
-*/
+
+$__dsn = "mysql:host=localhost;dbname=walkmate;charset=utf8mb4";
+$__dbUserName = "root";
+$__dbPassword = "wpslxm20";
+
 
 header("Content-Type:application/json");
 

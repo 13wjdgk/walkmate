@@ -8,7 +8,7 @@ const session=async()=>{
     }
 };
 session();
-
+//로그인이 되어 있는지 확인한 후 로그인이 되지 않았으면 산책 구하기 페이지를 띄우지 않고 경고창을 띄움
 const checkLogin = async() => {
     const account = await axios.get("../php/account/checkSession.php");
     console.log(account.data[0].real_id);
