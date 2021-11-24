@@ -59,6 +59,15 @@ input[type="submit"] {                /* input[type="submit"] 요소에만 적�
 input[type="submit"]:hover{ color:white; background-color: #448AFF; } /* hover를 설정하여 마우스를 올렸을 때, 버튼색이 바뀌게 설정 */
 
 textarea:focus,input:focus {outline:none;}                                /* 입력칸 테두리 없애기 */
+
 /*로그인*/
 
+input[type="submit"]:hover{ color:white; background-color: #448AFF; }
+input[type="button"]:hover{ color:white; background-color: #448AFF; }
 
+textarea:focus,input:focus {outline:none;}
+
+
+input[type="button"] {
+    margin-top: 8rem;                         /* 회원가입 위치 설정 */
+}

@@ -6,6 +6,7 @@ const createWriting = async () => {
     const depLatitude = document.getElementById('getAddress_Ma').value;
     const depLongitude = document.getElementById('getAddress_La').value;
     if (title && depTime && maxMemberCount && description&&depLongitude&&depLatitude) {
+        location.href ="./../html/list.html";
         console.log(title);
         console.log(maxMemberCount);
         console.log(description);
@@ -28,3 +29,4 @@ const createWriting = async () => {
         }
     }
 }
+
