@@ -13,7 +13,7 @@ try {
         throw new Exception("로그인 세션 오류", 2);
     }
 
-    $targetWalkKey = $_POST['walkKey'];
+    $targetWalkKey = $_POST['walkKey']; // 신청할 글의 키
 
     //모집글에 참가, 신청 중인 유저 리스트를 받아와 순회하여 중복체크
     $memberSql = "SELECT * FROM memberlist WHERE walkKey = :walkKey";

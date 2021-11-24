@@ -17,7 +17,7 @@ try {
     $query -> bindValue(':reqKey', $reqWalkKey, PDO::PARAM_INT);
 
     execQuery($query);
-
+    
     if($query -> rowCount() < 1) { // 조회 된 내용이 없는 경우
         throw new Exception("없는 글", 3);
     }   

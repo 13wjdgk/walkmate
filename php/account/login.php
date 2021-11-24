@@ -15,17 +15,17 @@ if($row){
     $passwordResult = password_verify($user_pw, $row['pw']); //pw 암호화
     if($passwordResult){
         $_SESSION['userId'] = $user_id;
-        echo json_encode(true,JSON_UNESCAPED_UNICODE|JSON_NUMERIC_CHECK);
 
+        // Add by NamHyeok Kim for walk apis
+        $_SESSION['userKey'] = $row['id'];
+        $_SESSION['userNickname'] = $row['nickname'];
+        // END
+
+        echo json_encode(true,JSON_UNESCAPED_UNICODE|JSON_NUMERIC_CHECK);
     }else{
         echo json_encode(false,JSON_UNESCAPED_UNICODE|JSON_NUMERIC_CHECK); 
     }
-    // ADD NH-K
-    $_SESSION['userKey'] = $row['id'];
-    $_SESSION['userNickname'] = $row['nickname'];
-    // END
 
-    echo $_SESSION['userId'];
 } else {            // 만약 참이 아니면 로그인 실패
    echo false;
 }

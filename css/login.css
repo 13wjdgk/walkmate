@@ -1,4 +1,4 @@
-/* 웰컴체 */
+/* 웰컴체 */ /* 신재형(로그인css 제작) */
 @font-face {
     font-family: 'OTWelcomeRA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
@@ -60,8 +60,5 @@ input[type="submit"]:hover{ color:white; background-color: #448AFF; } /* hover�
 
 textarea:focus,input:focus {outline:none;}                                /* 입력칸 테두리 없애기 */
 
-input[type="submit"]:hover{ color:white; background-color: #448AFF; }
-input[type="button"]:hover{ color:white; background-color: #448AFF; }
 
-textarea:focus,input:focus {outline:none;}
 
