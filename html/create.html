@@ -237,7 +237,7 @@
                 var el = document.createElement('li'),
                 itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                             '<div class="info" >' +
-                            '   <h5>' + places.place_name + '</h5>'+`<button style="width:4rem;" onclick="getLocated('${places.road_address_name}');">선택하기</button>`;
+                            '   <h5>' + places.place_name + '</h5>'+`<button onclick="getLocated('${places.road_address_name}');">선택하기</button>`;
             
                 if (places.road_address_name) {
                     itemStr += '    <span>' + places.road_address_name + '</span>' +

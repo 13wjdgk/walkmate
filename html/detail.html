@@ -18,6 +18,7 @@
     <div class="nav">
         <a class ="logo" href="./main.html">wɔːk meɪt</a>
         <div class="menu">
+            <!-- 산책메이트를 눌렀을 때 checkLogin 함수 실행 -->
             <a class="menu_a" href="./create.html" href="#" onclick="checkLogin()">산책메이트 구하기</a>
 
             <a class="menu_a" href="./list.html">산책메이트 찾기</a>
@@ -34,68 +35,85 @@
         <div class="container_item">
             <p>*지도에서 위치를 확인하세요!</p>
             <div id="staticMap" style="width:800px;height:400px;"></div>
+            <!-- 정적지도를 표시하기 위한 라이브러리 불러오기 -->
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6aa7b3f280d43b865071717aa200ff7&libraries=drawing"></script>
             <script>
-                //페이지가 로드되면 함수를 실행
                 var depLatitude, depLongitude;
+                //페이지가 로드되면 loadDetail 함수를 실행
                 window.onload = function() {
                     loadDetail();
                 }
+                // 글을 올린 작성자인지 아닌지에 따라 삭제하기나 신청하기 버튼이 뜸
                 const sessionIsHost= (isHost)=>{
-                    const account = isHost;
-                    console.log(isHost);
+                    //작성자가 맞으면 삭제하기 버튼을 띄움
                     if(isHost){
-                    $('.container_item_in' ).append('<button onclick="deleteWalk()">삭제하기</button> ');}
+                        //삭제하기 버튼을 누르면 deleteWalk 함수 실행
+                        $('.container_item_in' ).append('<button onclick="deleteWalk()">삭제하기</button> ');}
+                    //작성자가 맞으면 신청하기 버튼을 띄움
                     else{
+                        //신청하기 버튼을 누르면 applyWalk 함수 실행
                         $('.container_item_in' ).append('<button onclick="applyWalk()">신청하기</button>');
                     }
                 };
+                //loadDetail 함수에서 사용
+                //받아온 data에 따라 공고페이지의 내용을 보여주는 함수
                 const bodyChange = (data) => {
+                    //해당하는 id를 찾아서 값을 넣어준다.
+                    //제목
                     document.getElementById("title").innerText = data.body.title;
+                    //날짜와 시간
                     document.getElementById("depTime").innerText = data.body.depTime;
+                    //산책최대인원
                     document.getElementById("maxMemberCount").innerText = data.body.maxMemberCount;
+                    //하고싶은 말
                     document.getElementById("description").innerText = data.body.description;
+                    //위도, 경도
                     depLatitude = data.body.depLatitude;
                     depLongitude = data.body.depLongitude;
 
+                    //정적지도에 마커를 표시하기 위해 위도와 경도로 좌표객체로 만들어줌
+
                     var markerPosition  = new kakao.maps.LatLng(depLatitude, depLongitude); 
 
-                    // 이미지 지도에 표시할 마커입니다
-                    // 이미지 지도에 표시할 마커는 Object 형태입니다
+                    // 이미지 지도에 표시할 마커
+                    // 이미지 지도에 표시할 마커는 Object 형태
                     var marker = {
                         position: markerPosition
                     };
-
-                    var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+                    // 이미지 지도를 표시할 div
+                    var staticMapContainer  = document.getElementById('staticMap'),   
                         staticMapOption = { 
-                            center: new kakao.maps.LatLng(depLatitude, depLongitude), // 이미지 지도의 중심좌표
-                            level: 3, // 이미지 지도의 확대 레벨
-                            marker: marker // 이미지 지도에 표시할 마커 
+                            // 이미지 지도의 중심좌표
+                            center: new kakao.maps.LatLng(depLatitude, depLongitude), 
+                            // 이미지 지도의 확대 레벨
+                            level: 3, 
+                            // 이미지 지도에 표시할 마커 
+                            marker: marker 
                         };    
 
                     // 이미지 지도를 생성합니다
                     var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
                 }
+                //산책 글의 primary key값을 받아오는 함수
                 function getWalkKey() {
-
+                    //url으로 전달된 파라미터를 추출하여 return
                     var params = location.search.substr(location.search.indexOf("?") + 1);
-
-                    var sval = "";
                     params = params.split("=");
-                    console.log(params[1]);
-
                     return params[1];
-
                 }
+                //디테일 페이지가 로드되면 해당하는 데이터를 서버에서 받아와 bodyChange 함수 실행
                 const loadDetail = async () => {
+                    //getWalkey 함수를 통해 산책 글의 번호 받아오기
                     const walkKey = getWalkKey();
+                    //walkKey의 값이 있으면 if문의 내용 실행
                     if (walkKey) {
                         try {
+                            //walkKey 값에 해당하는 객체를 서버에서 받아오기
                             const response = await axios.post("../php/walk/getWalkDetail.php", {
                                 walkKey: walkKey,
                             });
+                            //받아온 값이 참이면 sessionIsHost 함수와 bodyChange 함수를 실행
                             if (response.data) {
-                                console.log(response.data);
                                 sessionIsHost(response.data.isHost);
                                 bodyChange(response.data);
                             }
