@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--신재형(로그인 페이지 설정)-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,14 +34,13 @@
     <!-- 로그인 바-->
 
     <!-- 로그인 -->
-    <div action="" method="post" class="member">
-        
+
+    <div class="member">
       <div class="login">
-        <input type="hidden" name="url" id="url" value="사이트를 통한 직접 로그인">
         <ul id="loging">
           <li>
-            <label for="user-name">아이디 </label>
-            <input type="text" id="user_id"  required>
+            <label for="user-name">아이디 </label>        <!--input태그를 정의하기 위해 label 태그 사용-->
+            <input type="text" id="user_id"  required>    <!--input태그 사용으로 정보를 받아들이고required사용으로 미입력시 알림뜨게 설정-->
           </li>
           <li>
             <label for="password">비밀번호 </label>

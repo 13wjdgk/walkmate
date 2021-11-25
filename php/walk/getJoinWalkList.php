@@ -36,7 +36,8 @@ try {
         $userAddr = $getAddrQuery -> fetch(PDO::FETCH_ASSOC);
         
         // 참가중인 글 목록 조회 (키 배열 문자열, WHERE IN 구문 활용)
-        $getWalksSql = "SELECT walk.*, HAVERSINE(walk.depLatitude, walk.depLongitude, :lat, :long) AS distance, memberList.joinTime FROM walk INNER JOIN memberlist ON walk.walkKey = memberlist.walkKey WHERE walk.walkKey IN ({$joinKeysString}) ORDER BY walk.writeTime DESC";
+        $getWalksSql = "SELECT walk.*, HAVERSINE(walk.depLatitude, walk.depLongitude, :lat, :long) AS distance, memberlist.joinTime 
+        FROM walk INNER JOIN memberlist ON walk.walkKey = memberlist.walkKey WHERE walk.walkKey IN ({$joinKeysString}) ORDER BY walk.writeTime DESC";
         $getWalksQuery = $database -> prepare($getWalksSql);
     
         $getWalksQuery -> bindValue(':lat', $userAddr['addrLatitude'], PDO::PARAM_STR);

@@ -19,7 +19,7 @@ const getApplyWalkList=async()=>{
     });
     if(list.data.walksCount){
                 for(var i=0;i<list.data.walksCount;i++){
-                    $('ul' ).append('<li><a href="'+'http://localhost/html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 :  '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>');};
+                    $('ul' ).append('<li><a href="'+'./html/detail.html?'+'walkKey='+list.data.walks[i].walkKey+'"><p class="li_h">'+list.data.walks[i].title+'</p></a><p style="color: gray;">인원 :  '+list.data.walks[i].maxMemberCount+'명 날짜 : '+list.data.walks[i].depTime+'</p></li>');};
                 }
 }
 //승인하기 버튼 함수
@@ -51,7 +51,7 @@ const getHostWalkList=async()=>{
         for(let i=0;i<list.data.walksCount;i++){
             const memberlist=list.data.walks[i].memberList;
             const applylist=list.data.walks[i].applyList;
-            $('ul' ).append(`<li><a href="http://localhost/html/detail.html?walkKey=${list.data.walks[i].walkKey}"><p class="li_h">${list.data.walks[i].title}</p></a><p style="color: gray;">인원 : ${list.data.walks[i].maxMemberCount}명 날짜 : ${list.data.walks[i].depTime}</p><div id="reco${i}" class="reco"><h5>신청한 사람</h5></div></li>`);                        
+            $('ul' ).append(`<li><a href="./html/detail.html?walkKey=${list.data.walks[i].walkKey}"><p class="li_h">${list.data.walks[i].title}</p></a><p style="color: gray;">인원 : ${list.data.walks[i].maxMemberCount}명 날짜 : ${list.data.walks[i].depTime}</p><div id="reco${i}" class="reco"><h5>신청한 사람</h5></div></li>`);                        
 
             if(applylist) {
                 for(let apply in applylist){  
@@ -82,4 +82,3 @@ const getJoinWalkList=async()=>{
                 }
 }
 getJoinWalkList();
-

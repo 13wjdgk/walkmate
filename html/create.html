@@ -239,7 +239,9 @@
                 var el = document.createElement('li'),
                 itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                             '<div class="info" >' +
+
                             '   <h5>' + places.place_name + '</h5>'+`<button style="width:4rem;" onclick="getLocated('${places.address_name}');">선택하기</button>`; //지도 목록 중 원하는 주소를 선택하면 getLocated 함수를 실행
+
             
                 if (places.road_address_name) {
                     itemStr += '    <span>' + places.road_address_name + '</span>' +

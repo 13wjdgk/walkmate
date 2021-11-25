@@ -1,4 +1,6 @@
+
 //signup.js write 김가은
+//signup.js write 고수민
 const signup=async()=>{
     var addr;
     addr = addrPass(); //좌표를 받아오는 함수 실행
@@ -41,5 +43,4 @@ const signup=async()=>{
     }else{
         console.log("데이터 안들어옴");
     }
-
 };
