@@ -67,9 +67,9 @@
     </div>
     <!-- 파랑 in_nav 바 -->
     <div class="in_nav">
-        <input class="title" type="text" style="font-size: 1.5rem;" placeholder="제목을 입력하세요">
+        <input class="title" type="text" style="font-size: 1.5rem;" placeholder="제목을 입력하세요"> <!--create 글 제목 입력-->
     </div>
-    <!-- contents -->
+    <!-- contents --> <!--create 지도로 위치 설정, 지도는 카카오 api 사용-->
     <div class="container">
         <div class="container_item">
             <p>*지도로 위치를 표시하세요</p>
@@ -80,7 +80,7 @@
                     <div class="option">
                         <div>
                             <form onsubmit="searchPlaces(); return false;">
-                                키워드 : <input type="text" value="경상대학교" id="keyword" size="15"> 
+                                키워드 : <input type="text" value="경상대학교" id="keyword" size="15">  <!--create 키워드로 장소 찾기-->
                                 <button type="submit">검색하기</button> 
                             </form>
                         </div>
@@ -209,6 +209,8 @@
                 // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
                 map.setBounds(bounds);
             }
+
+            //입력 받은 주소를 좌표로 바꿔 주소, 위도,경도를 html 요소의 value 값으로 전달시켜 줌 write 김가은
             function getLocated(located){
                 // 주소-좌표 변환 객체를 생성합니다
                 var geocoder = new kakao.maps.services.Geocoder();
@@ -237,7 +239,9 @@
                 var el = document.createElement('li'),
                 itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                             '<div class="info" >' +
-                            '   <h5>' + places.place_name + '</h5>'+`<button onclick="getLocated('${places.road_address_name}');">선택하기</button>`;
+
+                            '   <h5>' + places.place_name + '</h5>'+`<button style="width:4rem;" onclick="getLocated('${places.address_name}');">선택하기</button>`; //지도 목록 중 원하는 주소를 선택하면 getLocated 함수를 실행
+
             
                 if (places.road_address_name) {
                     itemStr += '    <span>' + places.road_address_name + '</span>' +
@@ -332,9 +336,10 @@
             }
             </script>
         </div>
+        <!-- 오른 쪽 내용 입력부분 -->
         <div class="container_item">
             <div class="container_item_in">
-                <input style="display: block; width: 20rem; margin-left: 0px;" type="text" id="getAddress" placeholder="장소">
+                <input style="display: block; width: 20rem; margin-left: 0px;" type="text" id="getAddress" placeholder="장소"> <!--위의 script에서 받은 주소를 띄움-->
                 <input type="text" id="getAddress_La" hidden>
                 <input type="text" id="getAddress_Ma" hidden>
                 <p>날짜</p><input type="datetime-local" style="width: 60%" class="depTime">
