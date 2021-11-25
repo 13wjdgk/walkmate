@@ -9,8 +9,9 @@ const login=async()=>{
                 user_pw:user_pw
             });
             if(account.data){
+                console.log("=============");
                 console.log(account.data);
-                self.location='./main.html';
+            
             }
             else{ 
                 console.log("입력 실패");

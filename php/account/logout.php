@@ -1,6 +1,6 @@
-<!-- logout php write 김가은 -->
+
 <?php
- 
+ //logout php write 김가은
  session_start();
  $result = session_unset(); //세션 해제
 
